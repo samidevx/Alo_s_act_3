@@ -49,30 +49,34 @@ app.post('/db', //path
         company : req.body.company,
         website_url : req.body.website_url,
         domains : req.body.domains,
-        country : req.body.country
+        country : req.body.countryv
     })
      res.status(200).json(db)
 })
 
 
-app.put('/db/:id', (req,res) => {
-    const id = parseInt(req.params.id)
-    let unv = db.find(unv => unv.id === id)
+app.put('/db/:email', (req,res) => {
+    const email = parseInt(req.params.email)
+    let dba = db.find(dba => dba.email === email)
 
-    unv.web_pages = req.body.web_pages,
-    unv.name =req.body.name,
-    unv.alpha_two_code = req.body.alpha_two_code,
-    unv.domains = req.body.domains,
-    unv.country = req.body.country
-
-    res.status(200).json(unv)
+    dba.first_name =req.body.first_name,
+    dba.last_name =req.body.last_name,
+    dba.full_name =req.body.full_name,
+    dba.country =req.body.country,
+    dba.position =req.body.position,
+    dba.twitter =req.body.twitter,
+    dba.linkedin =req.body.linkedin,
+    dba.phone_number =req.body.phone_number,
+    dba.website_url=req.body.website_url,
+    dba.company =req.body.company,
+    res.status(200).json(dba)
 })
 
-app.delete('/db/:id', (req,res) => {
-    const id = parseInt(req.params.id)
-    let unv = db.find(unv => unv.id === id)
-    db.splice(db.indexOf(unv),1)
-    res.status(200).json(db)
+app.delete('/db/:email', (req,res) => {
+    const email = parseInt(req.params.email)
+    let dba = db.find(dba => dba.email === email)
+    db.splice(db.indexOf(dba),1)
+    res.status(200).json(dba)
 })
  
 module.exports= app.listen(3000, () => {
