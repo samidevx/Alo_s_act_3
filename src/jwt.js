@@ -2,6 +2,7 @@ const jwt =require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 app.post("/register", async (req, res) => {
 
+  
     // Our register logic starts here
     try {
       // Get user input
